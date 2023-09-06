@@ -12,7 +12,7 @@ def update():
     print("Still running: ")
     print(print(current_time))
 
-def regKayCar():
+def regKayCar(choice):
 
     def enter():
         keyboard.tap(Key.enter)
@@ -24,6 +24,18 @@ def regKayCar():
 
     def lilSleep():
         time.sleep(.3)
+
+    if choice == 1:
+        aptNum = "303D"
+        phoneNum = "2741"
+
+    elif choice == 2:
+        aptNum = "303B"
+        phoneNum = "2051"
+
+    elif choice == 3:
+        aptNum = "303A"
+        phoneNum = "4558"
 
     keyboard = Controller()
 
@@ -45,12 +57,12 @@ def regKayCar():
     tab()
     tab()
 
-    for char in "303D":
+    for char in aptNum:
         keyboard.tap(char)
     lilSleep()
     tab()
 
-    for char in "2741":
+    for char in phoneNum:
         keyboard.tap(char)
     lilSleep()
 
@@ -124,10 +136,20 @@ def regKayCar():
         smtp.sendmail(email_sender, email_reciever, em.as_string())
 
 #schedule.every().day.at("17:19").do(regKayCar)
-schedule.every().day.at("17:30").do(regKayCar)
-schedule.every(1).hours.do(update)
-#regKayCar()
+#schedule.every().day.at("20:49").do(regKayCar)
+#schedule.every(1).hours.do(update)
+print("1 - Dylan")
+print("2 - Nich")
+print("3 - Versie")
+choice = input("Whose name to register under: ")
+choice = int(choice)
 
-while True:
-    schedule.run_pending()
-    time.sleep(2)
+while choice != 1 and choice != 2 and choice != 3:
+    choice = input("Try again: ")
+    choice = int(choice)
+
+regKayCar(choice)
+
+#while True:
+    #schedule.run_pending()
+    #time.sleep(2)
